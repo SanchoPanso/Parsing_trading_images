@@ -2,6 +2,8 @@ import os
 from config import *
 from border_detection import get_borders_of_vertical_scale
 
+from arg_parser import get_args
+
 from input_output import write_into_json, prepare_dict_for_output
 from input_output import get_image, get_image_using_path
 
@@ -18,7 +20,9 @@ import sys
 def main():
     """The main entry point of the application"""
 
-    img = get_image()
+    args = get_args()
+    img = get_image(args)
+
     # if getting the image is unable, to exit the program is necessary
     if img is None:
         sys.exit()
@@ -62,8 +66,8 @@ def main():
         # recording
         result_dict = prepare_dict_for_output(all_price_results, direction, ticker)
         print(f"Результаты:\n{result_dict}")
-        write_into_json(output_file_path, result_dict)
-        print(f"Результаты записаны в файл {output_file_path}")
+        write_into_json(args.output, result_dict)
+        print(f"Результаты записаны в файл {args.output}")
         nothing_is_found = False
         break
 

@@ -14,18 +14,14 @@ example_url = "https://www.tradingview.com/x/nShwrpHU/"
 example_path = "example.jpg"
 
 
-def get_image():
+def get_image(args: argparse.Namespace):
     """get image using command line arguments"""
-    parser = argparse.ArgumentParser()
-    parser.add_argument('path_or_url', nargs='?', default=example_path)
-    parser.add_argument('-u', '--url', action='store_true', default=False)
-    namespace = parser.parse_args(sys.argv[1:])
-    if namespace.url:
-        url = namespace.path_or_url
-        return get_image_using_url(url)
+    if args.path != "":
+        return get_image_using_path(args.path)
+    elif args.url != "":
+        return get_image_using_url(args.url)
     else:
-        path = namespace.path_or_url
-        return get_image_using_path(path)
+        return None
 
 
 def get_image_using_path(path: str):

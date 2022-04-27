@@ -24,10 +24,19 @@ sudo apt install libtesseract-dev
 
 ## Парсинг
 
-Программа запускается либо командой `python main.py [path]`, где path - 
- путь к исходному изображению, либо командой `python main.py [url] -u`, где url - адрес, с которого нужно
- скачивать изображение. Результат сохраняется в `output.json` в директории проекта.
- 
+Запуск парсинга с указанием пути к изображением:
+```
+python src/main.py --path path/to/file.jpg
+```
+Запуск парсинга с указанием ссылки на изображение:
+```
+python src/main.py --url https://link/to/file.jpg
+```
+Запуск с указанием пути к исходному изображению и пути к файлу с результатом (по умалчанию - `output.jpg`):
+```
+python src/main.py --path path/to/file.jpg --output path/to/output.json
+```
+
 ## Демо
 
  Для тестирования можно запустить файл `debugging_and_testing.py`, который обработает все изображения из 

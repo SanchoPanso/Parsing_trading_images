@@ -13,13 +13,16 @@ pip install -r requirements.txt
 ### Установка tesseract-ocr
 Для Linux:
 ```
-
+sudo apt install tesseract-ocr
+sudo apt install libtesseract-dev
 ```
 Для Windows:
 
+1. https://github.com/UB-Mannheim/tesseract/wiki
+2. Установить в `src/config.py` корректный путь к файлу c программой в переменной `windows_tesseract_path`.
+По умолчанию равно `D:\Program Files\Tesseract-OCR\tesseract.exe`.
+
 ## Парсинг
-
-
 
 Программа запускается либо командой `python main.py [path]`, где path - 
  путь к исходному изображению, либо командой `python main.py [url] -u`, где url - адрес, с которого нужно
@@ -28,7 +31,7 @@ pip install -r requirements.txt
 ## Демо
 
  Для тестирования можно запустить файл `debugging_and_testing.py`, который обработает все изображения из 
- папки `test_images` и сохранит их в папку `results` со специальными метками на изображении, 
+ папки `original_images` и сохранит их в папку `results` со специальными метками на изображении, 
  на которых будут указаны результаты парсинга. Во время тестирования будет также вывоится окна с обработанными изображениями
  для большей наглядности.
 
